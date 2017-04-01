@@ -2,6 +2,7 @@ import base64
 import socket
 import urllib
 import urllib2
+import sys
 from config.config import skip,top,accountKey
 
 try:
@@ -25,7 +26,10 @@ def BingSearch(domain):
     payload['$format'] = 'json'
     payload['Query'] = "'" + query + "'"
     url = 'https://api.datamarket.azure.com/Bing/Search/Web?' + urllib.urlencode(payload)
-    sAuth = 'Basic ' + base64.b64encode(':' + accountKey)
+    if accountKey != "":
+        sAuth = 'Basic ' + base64.b64encode(':' + accountKey)
+    else:
+        sys.exit(0)
 
     headers = {}
     headers['Authorization'] = sAuth

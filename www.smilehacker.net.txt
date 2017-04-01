@@ -1,0 +1,5 @@
+200 pages:
+http://www.smilehacker.net/wp-admin/admin-ajax.php
+http://www.smilehacker.net/122.php
+http://www.smilehacker.net/DataBackup/diy3.php
+http://www.smilehacker.net/NavBar.php

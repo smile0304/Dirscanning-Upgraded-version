@@ -34,13 +34,13 @@ class ScanningClass(threading.Thread):
             self.dir1 = "dic/" + dir
             self.readdic(self.dir1)
     def urlHandling(self,url):
-        if not url.startswith("http://") or url.startswith("https://"):
-            self.filename = url
-            self.url = "http://" + url
+        if not url.startswith('http://') and not url.startswith('https://'):
+                self.filename = url
+                self.url = 'http://' + self.url
         else:
             self.url = urlparse.urlparse(url).netloc
             self.filename = self.url
-            self.url = "http://" + self.url
+            self.url = 'http://' + self.url
         return self.filename, self.url
     def readdic(self,dir):
         dic = []
@@ -123,7 +123,7 @@ class ScanningClass(threading.Thread):
         while not self.queue.empty() and self.STOP_ME == False:
             try:
                 payload = self.queue.get(timeout=1.0)
-                html_result = requests.get(payload,timeout=5)
+                html_result = requests.get(payload,timeout=3)
                 self.msg_queue.put('status')
             except:
                 pass
